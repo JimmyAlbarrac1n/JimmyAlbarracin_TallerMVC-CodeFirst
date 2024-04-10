@@ -1,4 +1,9 @@
+﻿using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.DependencyInjection;
+using JimmyAlbarracin_TallerMVC_CodeFirst.Data;
 var builder = WebApplication.CreateBuilder(args);
+builder.Services.AddDbContext<JimmyAlbarracin_TallerMVC_CodeFirstContext>(options =>
+    options.UseSqlServer(builder.Configuration.GetConnectionString("JimmyAlbarracin_TallerMVC_CodeFirstContext") ?? throw new InvalidOperationException("Connection string 'JimmyAlbarracin_TallerMVC_CodeFirstContext' not found.")));
 
 // Add services to the container.
 builder.Services.AddControllersWithViews();
